@@ -7,12 +7,12 @@ TMP_FILE=_fail_proccess
 # Start video record
 xcrun simctl io booted recordVideo video_record.mov & echo $! > video_record.pid
 
-APP_ID=com.retyui.myapp
+APP_ID=org.wikipedia
 
 # Retry 3 times before the steps actually fails
-(echo "===== Run E2E Attempt:  1 ====" &&             $HOME/.maestro/bin/maestro test .maestro/ --env=APP_ID="$APP_ID" --format=junit --output report1.xml) || \
-(echo "===== Run E2E Attempt:  2 ====" && sleep 20 && $HOME/.maestro/bin/maestro test .maestro/ --env=APP_ID="$APP_ID" --format=junit --output report2.xml) || \
-(echo "===== Run E2E Attempt:  3 ====" && sleep 60 && $HOME/.maestro/bin/maestro test .maestro/ --env=APP_ID="$APP_ID" --format=junit --output report3.xml) || \
+(echo "===== Run E2E Attempt:  1 ====" &&             $HOME/.maestro/bin/maestro test samples/wikipedia-android-advanced/run-test.yml --env=APP_ID="$APP_ID" --format=junit --output report1.xml) || \
+(echo "===== Run E2E Attempt:  2 ====" && sleep 20 && $HOME/.maestro/bin/maestro test samples/wikipedia-android-advanced/run-test.yml --env=APP_ID="$APP_ID" --format=junit --output report2.xml) || \
+(echo "===== Run E2E Attempt:  3 ====" && sleep 60 && $HOME/.maestro/bin/maestro test samples/wikipedia-android-advanced/run-test.yml --env=APP_ID="$APP_ID" --format=junit --output report3.xml) || \
 (echo "===== Run E2E Step Failed ====" && touch "$TMP_FILE")
 
 # Stop video record process

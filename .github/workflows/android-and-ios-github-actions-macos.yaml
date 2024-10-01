@@ -41,7 +41,11 @@ jobs:
           curl -Ls 'https://get.maestro.mobile.dev' | bash
 
       - name: Install .app
-        run: xcrun simctl install booted ./MyApp.app
+        run: |
+          cd samples
+          unzip sample.zip
+          xcrun simctl install booted Wikipedia.app
+          cd ..
 
       - name: Run Maestro E2E tests
         run: ./run_ios_e2e.sh
