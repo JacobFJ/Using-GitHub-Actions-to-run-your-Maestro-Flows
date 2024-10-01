@@ -3,7 +3,7 @@ name: Android & iOS E2E (Github Actions MacOS)
 on: [push, pull_request]
 
 env:
-  MAESTRO_VERSION: 1.30.4
+  MAESTRO_VERSION: 1.38.1
 
 jobs:
   run_ios_e2e:
